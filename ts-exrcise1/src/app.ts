@@ -98,7 +98,7 @@ interface Reader extends Person {
   favoriteBook: Book;
 }
 const Reader1: Reader = {
-  age: 100,
+  age: 80,
   favoriteBook: abc,
   isStudent: false,
   name: "eli",
@@ -113,16 +113,30 @@ const Reader2: Reader = {
 const Readers: Reader[] = [Reader1, Reader2];
 
 const oldestReader: (arr: Reader[]) => Reader | void = (arr) => {
-  let max = arr.find((reader) => Math.max(reader.age));
-  return max;
+  let max: number = 0;
+  let user;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].age > max) {
+      user = arr[i];
+      max = user.age;
+    }
+  }
+  return user;
 };
 let oldestMan = oldestReader(Readers);
 console.log(oldestMan);
 
 //13
 const oldestBook: (arr: Reader[]) => Book | void = (arr) => {
-  let min = arr.find((reader) => Math.min(reader.favoriteBook.Year));
-  return min?.favoriteBook;
+  let min: number = 0;
+  let user: Reader = arr[0];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].favoriteBook.Year < min) {
+      min = arr[i].favoriteBook.Year;
+      user = arr[i];
+    }
+  }
+  return user.favoriteBook;
 };
 const oldBook = oldestBook(Readers);
 console.log(oldBook);
