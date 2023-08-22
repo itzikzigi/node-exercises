@@ -1,0 +1,14 @@
+{
+  "main": "./dist/app.js",
+  "scripts": {
+    "start": "tsc&&node .",
+    "dev": "nodemon ."
+  },
+  "dependencies": {
+    "typescript": "5.1.6",
+    "tsc": "2.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
